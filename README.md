@@ -9,6 +9,10 @@
 
 ---
 
+[![Acesse o sistema online](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://desafioagenteia.streamlit.app/)
+
+---
+
 ## 📋 Visão Geral
 
 O **Banco Ágil** é um sistema de atendimento ao cliente bancário totalmente orientado a Inteligência Artificial, construído com uma arquitetura **multi-agentes**. O projeto simula o atendimento de um banco digital fictício, onde o cliente interage com uma única interface de chat — sem perceber que, por baixo dos panos, múltiplos agentes especializados colaboram para resolver sua demanda.
