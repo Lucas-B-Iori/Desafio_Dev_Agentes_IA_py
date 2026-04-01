@@ -329,4 +329,4 @@ python main.py
 ## 👤 Autor
 
 **Lucas B. Iori**  
-Desafio Técnico — Desenvolvedor de Agentes de IA (Python) · 2025
+Desafio Técnico — Desenvolvedor de Agentes de IA (Python) 
