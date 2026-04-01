@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Ambiente virtual
+venv/
+.venv/
+env/
+
+# Variáveis de ambiente
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dados gerados em runtime
+banco_agil/dados/solicitacoes_aumento_limite.csv
+debug_agentes.log
+
+# Scripts de teste locais e debug
+test_*.py
+*bug*.py
