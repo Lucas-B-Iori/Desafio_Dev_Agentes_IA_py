@@ -13,22 +13,22 @@
 
 ---
 
-## 📋 Visão Geral
+##  Visão Geral
 
 O **Banco Ágil** é um sistema de atendimento ao cliente bancário totalmente orientado a Inteligência Artificial, construído com uma arquitetura **multi-agentes**. O projeto simula o atendimento de um banco digital fictício, onde o cliente interage com uma única interface de chat — sem perceber que, por baixo dos panos, múltiplos agentes especializados colaboram para resolver sua demanda.
 
 O sistema oferece quatro serviços principais:
 
-- 🔐 **Autenticação segura** por CPF e data de nascimento
-- 💳 **Consulta e aumento de limite de crédito** com análise de score
-- 📊 **Reavaliação do perfil financeiro** via entrevista conversacional
-- 💱 **Cotação de moedas em tempo real** via API externa
+-  **Autenticação segura** por CPF e data de nascimento
+-  **Consulta e aumento de limite de crédito** com análise de score
+-  **Reavaliação do perfil financeiro** via entrevista conversacional
+-  **Cotação de moedas em tempo real** via API externa
 
 A experiência é desenhada para que o cliente se sinta atendido por **uma única entidade inteligente**, sem perceber as transições entre agentes especializados.
 
 ---
 
-## 🗂️ Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 Desafio_Dev_Agentes_IA_py/
@@ -118,15 +118,15 @@ O sistema utiliza o padrão **Orquestrador + Sub-agentes** com o framework **Goo
 
 ---
 
-## ✅ Funcionalidades Implementadas
+##  Funcionalidades Implementadas
 
-### 🔐 Autenticação (Agente de Triagem)
+###  Autenticação (Agente de Triagem)
 - Coleta CPF e data de nascimento (na mesma mensagem ou separadamente)
 - Valida contra `clientes.csv` com normalização de formatos de data (`DD/MM/AAAA`, `AAAA-MM-DD`, etc.)
 - Bloqueia o CPF após **3 tentativas consecutivas falhas**, encerrando o atendimento automaticamente
 - Interpreta linguagem natural (ex: "vinte e seis de dezembro de dois mil e três" → `2003-12-26`)
 
-### 💳 Crédito (Agente de Crédito)
+###  Crédito (Agente de Crédito)
 - Consulta o limite de crédito atual do cliente sem pedir o CPF novamente (extrai do histórico)
 - Processa solicitações de aumento de limite com o seguinte fluxo:
   1. Registra a solicitação em `solicitacoes_aumento_limite.csv` com status `pendente`
@@ -134,7 +134,7 @@ O sistema utiliza o padrão **Orquestrador + Sub-agentes** com o framework **Goo
   3. Atualiza o status para `aprovado` ou `rejeitado` e, se aprovado, persiste o novo limite no cadastro
 - Se rejeitado, oferece redirecionamento para a entrevista de reavaliação de perfil
 
-### 📊 Entrevista de Crédito (Agente de Entrevista)
+###  Entrevista de Crédito (Agente de Entrevista)
 - Conduz 5 perguntas financeiras em sequência, uma por vez
 - Traduz respostas informais (ex: "CLT", "faço bico", "tô na rua", "5k") para os tipos esperados pela fórmula
 - Calcula o novo score com a fórmula ponderada:
@@ -149,14 +149,14 @@ O sistema utiliza o padrão **Orquestrador + Sub-agentes** com o framework **Goo
 - Respeita desistência do cliente a qualquer momento da entrevista
 - Nunca revela a fórmula, os pesos ou o score ao cliente (segredo de negócio)
 
-### 💱 Câmbio (Agente de Câmbio)
+###  Câmbio (Agente de Câmbio)
 - Consulta cotações em tempo real via **AwesomeAPI** (`economia.awesomeapi.com.br`)
 - Suporta dólar, euro, libra, iene, bitcoin, peso argentino, franco suíço, dólar canadense e yuan
 - Interpreta abreviações e gírias ("dol", "euri", "btc") antes de chamar a API
 - Retorna valores de compra, venda, variação percentual, máximo e mínimo do dia
 - Trata erros de conexão, timeout e moeda não encontrada sem interromper o atendimento
 
-### 🔄 Comportamentos Transversais (todos os agentes)
+###  Comportamentos Transversais (todos os agentes)
 - **Identidade única:** nenhum agente revela ao cliente que é um agente ou que foi transferido
 - **Encerramento controlado:** qualquer agente pode chamar `encerrar_atendimento`, que bloqueia o input na UI e impede novas mensagens
 - **Fallback anti-vazio:** o `app.py` detecta respostas vazias do ADK (bug conhecido de reentrada) e dispara um retry forçado com injeção de contexto
@@ -165,7 +165,7 @@ O sistema utiliza o padrão **Orquestrador + Sub-agentes** com o framework **Goo
 
 ---
 
-## ⚙️ Escolhas Técnicas e Justificativas
+##  Escolhas Técnicas e Justificativas
 
 ### Google ADK (Agent Development Kit)
 O ADK foi escolhido por oferecer suporte nativo ao padrão **orquestrador + sub-agentes** com `transfer_to_agent`, histórico de conversa automático via `InMemoryRunner`, e integração direta com a Google GenAI. Isso eliminou a necessidade de construir um roteador de agentes do zero, permitindo foco na lógica de negócio.
@@ -187,7 +187,7 @@ API pública, gratuita, sem necessidade de chave de acesso, com cobertura das pr
 
 ---
 
-## 🧩 Desafios Enfrentados e Como Foram Resolvidos
+##  Desafios Enfrentados e Como Foram Resolvidos
 
 ### 1. Respostas vazias do ADK (bug de reentrada)
 **Problema:** Em certos fluxos de transferência entre agentes, o ADK retornava eventos sem conteúdo de texto — especialmente após o agente de entrevista devolver o controle ao root agent.
@@ -216,7 +216,7 @@ API pública, gratuita, sem necessidade de chave de acesso, com cobertura das pr
 
 ---
 
-## 🚀 Tutorial de Execução
+##  Tutorial de Execução
 
 ### Pré-requisitos
 
@@ -275,7 +275,7 @@ python main.py
 
 ---
 
-## 🧪 Testando o Sistema
+##  Testando o Sistema
 
 ### Clientes disponíveis na base de dados
 
@@ -313,7 +313,7 @@ python main.py
 
 ---
 
-## 📦 Dependências
+##  Dependências
 
 | Pacote | Versão | Uso |
 |---|---|---|
@@ -326,7 +326,7 @@ python main.py
 
 ---
 
-## 👤 Autor
+##  Autor
 
 **Lucas B. Iori**  
 Desafio Técnico — Desenvolvedor de Agentes de IA (Python) 
