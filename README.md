@@ -63,7 +63,7 @@ Desafio_Dev_Agentes_IA_py/
 
 ---
 
-## 🏛️ Arquitetura do Sistema
+##  Arquitetura do Sistema
 
 ### Visão Geral
 
